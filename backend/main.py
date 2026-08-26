@@ -24,7 +24,7 @@ app.add_middleware(
 # ---------------------------------------------------
 
 def get_db():
-    connection = sqlite3.connect("Database\database.db")
+    connection = sqlite3.connect("Database/database.db")
     connection.row_factory = sqlite3.Row
     return connection
 
