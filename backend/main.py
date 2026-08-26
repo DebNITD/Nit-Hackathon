@@ -26,6 +26,7 @@ app.add_middleware(
 def get_db():
     connection = sqlite3.connect("Database/database.db")
     connection.row_factory = sqlite3.Row
+    connection.autocommit = True
     return connection
 
 
@@ -103,9 +104,7 @@ def create_tables():
         )
     """)
 
-    db.commit()
     db.close()
-
 
 create_tables()
 
@@ -142,7 +141,6 @@ def create_user(
         (name, email, role.upper())
     )
 
-    db.commit()
 
     user_id = cursor.lastrowid
 
@@ -212,7 +210,6 @@ def create_instrument(
             )
         )
 
-        db.commit()
 
         instrument_id = cursor.lastrowid
 
@@ -298,7 +295,6 @@ def create_application(
         )
     )
 
-    db.commit()
 
     application_id = cursor.lastrowid
 
@@ -393,7 +389,6 @@ def assign_officer(
         (application_id,)
     )
 
-    db.commit()
 
     assignment_id = cursor.lastrowid
 
@@ -467,7 +462,6 @@ def create_verification(
         (application_id,)
     )
 
-    db.commit()
 
     verification_id = cursor.lastrowid
 
@@ -522,8 +516,6 @@ def add_test_result(
             result
         )
     )
-
-    db.commit()
 
     test_id = cursor.lastrowid
 
@@ -602,8 +594,6 @@ def complete_verification(verification_id: int):
                 verification["application_id"]
             )
         )
-
-    db.commit()
 
     db.close()
 
