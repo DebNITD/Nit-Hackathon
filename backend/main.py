@@ -4,7 +4,7 @@ import sqlite3
 from datetime import datetime
 
 app = FastAPI(
-    title="Metrify API",
+    title="MaapYantra API",
     description="Online Verification System for Weighing and Measuring Instruments",
     version="1.0"
 )
@@ -24,7 +24,7 @@ app.add_middleware(
 # ---------------------------------------------------
 
 def get_db():
-    connection = sqlite3.connect("Database/database.db")
+    connection = sqlite3.connect("database.db")
     connection.row_factory = sqlite3.Row
     connection.autocommit = True
     return connection
@@ -34,7 +34,7 @@ def create_tables():
     db = get_db()
 
     db.execute("""
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS staff (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
