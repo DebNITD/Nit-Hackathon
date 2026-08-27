@@ -52,3 +52,104 @@ Our project provides a single easy-to-use digital platform connecting all users 
 After successful verification , a digital certificate can be generated with a QR code. The QR code sent in a PDF can be scanned to check the certificate and all data submitted. This reduces paperwork, improves efficiency and simplifies verification process.
 
 =================================================How to Use This=================================================================
+# 👨‍⚖️ How to Use PARAKH — For Judges & Evaluators
+
+## 📌 Project Overview
+
+PARAKH is an online verification system for weighing and measuring instruments.
+
+The system digitizes the complete verification workflow:
+Register Instrument
+        ↓
+Submit Verification Application
+        ↓
+Application Review
+        ↓
+Officer Assignment
+        ↓
+Field Verification
+        ↓
+Enter Test Readings
+        ↓
+Automatic Error Calculation
+        ↓
+PASS / FAIL
+        ↓
+Digital Certificate
+        ↓
+QR-based Verification
+
+💻 System Requirements
+
+To run and evaluate the project, the following are recommended:
+
+Windows / Linux / macOS
+Python 3.x
+Node.js 18+
+Git
+Internet connection
+Modern web browser
+
+No special hardware is required to run the software prototype.
+
+📥 1. Clone the Repository
+
+Open a terminal / command prompt and run:
+
+git clone https://github.com/DebNITD/Nit-Hackathon.git
+
+Enter the project directory:
+
+cd Nit-Hackathon
+📁 2. Project Structure
+
+The project is organized into the following major components:
+Nit-Hackathon/
+│
+├── backend/
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   ├── requirements.txt
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── docs/
+│   └── ...
+│
+├── README.md
+└── .gitignore
+
+⚙️ 3. Start the Backend
+
+Open a terminal inside the backend directory:
+
+cd backend
+
+Create a Python virtual environment:
+
+python -m venv .venv
+Windows
+
+Activate the virtual environment:
+
+.venv\Scripts\activate
+Linux / macOS
+source .venv/bin/activate
+
+Install the required Python packages:
+
+pip install -r requirements.txt
+
+Start the FastAPI backend:
+
+python -m uvicorn main:app --reload
+
+The backend will run at:
+
+http://127.0.0.1:8000
