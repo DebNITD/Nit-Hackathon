@@ -117,7 +117,7 @@ create_tables()
 @app.get("/")
 def home():
     return {
-        "message": "Metrify backend is running!",
+        "message": "MaapYantra backend is running!",
         "status": "OK"
     }
 
