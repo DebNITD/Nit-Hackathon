@@ -51,7 +51,6 @@ def create_tables():
             manufacturer TEXT,
             model TEXT,
             serial_number TEXT UNIQUE NOT NULL,
-            capacity REAL,
             location TEXT,
             status TEXT DEFAULT 'REGISTERED',
             created_at TEXT
@@ -177,7 +176,6 @@ def create_instrument(
     serial_number: str,
     manufacturer: str = "",
     model: str = "",
-    capacity: float = 0,
     location: str = ""
 ):
     db = get_db()
@@ -193,11 +191,10 @@ def create_instrument(
                 manufacturer,
                 model,
                 serial_number,
-                capacity,
                 location,
                 created_at
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 owner_id,
@@ -205,7 +202,6 @@ def create_instrument(
                 manufacturer,
                 model,
                 serial_number,
-                capacity,
                 location,
                 datetime.now().isoformat()
             )
