@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            max-width: 90%;
+            margin: 100px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h2>Login</h2>
+
+        <form action="/Nit-Hackathon/frontend/dashboard.html" target="_blank">
+
+            <!-- User ID -->
+
+            <label for="userid">
+                User ID
+            </label>
+
+            <input
+                type="text"
+                id="userid"
+                name="userid"
+                placeholder="Enter your User ID"
+                required
+            >
+
+
+            <!-- Password -->
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <!-- Login Button -->
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <!-- Registration Link -->
+
+        <div class="register-link">
+
+            <p>
+                Don't have an account?
+
+                <a href="/Nit-Hackathon/frontend/verification_form.html" target="_blank">
+                    Register here
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
