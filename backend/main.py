@@ -34,11 +34,12 @@ def create_tables():
     db = get_db()
 
     db.execute("""
-        CREATE TABLE IF NOT EXISTS staff (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+        CREATE TABLE IF NOT EXISTS user (
+            id INTEGER PRIMARY KEY ,
             name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
-            role TEXT NOT NULL
+            role TEXT NOT NULL.
+            phno
         )
     """)
 
