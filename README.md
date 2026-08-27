@@ -1,6 +1,6 @@
 # Nit-Hackathon
 
-Welcome to Project MaapYantra...
+Welcome to Project ................MaapYantra................
 
 ================================================Problem Statement================================================================
 Development of an Online Verification System for Weighing and Measuring Instruments
@@ -51,4 +51,4 @@ Our project provides a single easy-to-use digital platform connecting all users 
 
 After successful verification , a digital certificate can be generated with a QR code. The QR code sent in a PDF can be scanned to check the certificate and all data submitted. This reduces paperwork, improves efficiency and simplifies verification process.
 
-===================================================How to Use This===============================================================
+=================================================How to Use This=================================================================
