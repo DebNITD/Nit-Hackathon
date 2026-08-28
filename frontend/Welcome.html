@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome Page</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hamburger Icon */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .navbar h2 {
+            font-size: 24px;
+        }
+
+        /* Side Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #222;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+        }
+
+        /* Menu Links */
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            text-align: center;
+            margin-top: 150px;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 20px;
+            color: #555;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+
+        <!-- Hamburger Icon -->
+        <span class="menu-btn" onclick="openMenu()">☰</span>
+
+        <h2>My Website</h2>
+
+    </div>
+
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+
+        <!-- Close Button -->
+        <span class="close-btn" onclick="closeMenu()">×</span>
+
+        <a href="/Nit-Hackathon/frontend/Welcome.html">🏠 Home</a>
+
+        <a href="/Nit-Hackathon/frontend/Login_form.html" target="_blank">🔐 Login</a>
+
+        <a href="/Nit-Hackathon/frontend/registration.html" target="_blank">📝 Registration</a>
+
+        <a href="about.html" target="_blank">ℹ️ About Us</a>
+
+        <a href="/Nit-Hackathon/frontend/contact.html" target="_blank">📞 Contact Us</a>
+
+    </div>
+
+
+    <!-- Welcome Content -->
+    <div class="main-content">
+
+        <h1>Welcome to Our Website</h1>
+
+        <p>
+            Please use the menu in the top-left corner
+            to navigate through the website.
+        </p>
+
+    </div>
+
+
+    <script>
+
+        // Open Sidebar
+        function openMenu() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        // Close Sidebar
+        function closeMenu() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+
+    </script>
+
+</body>
+</html>

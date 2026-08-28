@@ -70,6 +70,20 @@
             font-size: 12px;
             color: gray;
         }
+
+        .login-link{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover{
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -79,7 +93,7 @@
 
         <h2>Registration Form</h2>
 
-        <form action="success.html">
+        <form action="/Nit-Hackathon/frontend/success.html">
 
             <!-- Name -->
             <label for="name">Full Name</label>
@@ -90,18 +104,10 @@
                 placeholder="Enter your full name"
                 required
             >
-
-            <!-- Aadhaar Number -->
-            <label for="aadhaar">Aadhaar Number</label>
-            <input 
-                type="text"
-                id="aadhaar"
-                name="aadhaar"
-                placeholder="Enter 12-digit Aadhaar number"
-                pattern="[0-9]{12}"
-                maxlength="12"
-                required
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" placeholder="Enter DoB" required
             >
+
 
             <!-- Phone Number -->
             <label for="phone">Phone Number</label>
@@ -128,6 +134,19 @@
                 placeholder="Enter your email"
             >
 
+
+            <!-- Aadhaar Number -->
+            <label for="aadhaar">Aadhaar Number</label>
+            <input 
+                type="text"
+                id="aadhaar"
+                name="aadhaar"
+                placeholder="Enter 12-digit Aadhaar number"
+                pattern="[0-9]{12}"
+                maxlength="12"
+                required
+            >
+
             <!-- Password -->
             <label for="password">Create Password</label>
             <input 
@@ -139,10 +158,26 @@
                 required
             >
 
+            <label for="pass">Confirm Password</label>
+            <input type="password" id="pass" name="pass" placeholder="Re-Enter Your Password " required>
+
+
+            
+
             <!-- Submit Button -->
             <button type="submit">Register</button>
 
         </form>
+
+        
+        <p class="login-link">
+            Already Registered? 
+
+            <a href="/Nit-Hackathon/frontend/Login_form.html" target="_blank">
+                Login here
+            </a>
+
+        </p>
 
     </div>
 
