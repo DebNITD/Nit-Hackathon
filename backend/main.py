@@ -38,8 +38,7 @@ def create_tables():
             id INTEGER PRIMARY KEY ,
             name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
-            role TEXT NOT NULL.
-            phno
+            role TEXT NOT NULL
         )
     """)
 
