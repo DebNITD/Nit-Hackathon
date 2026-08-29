@@ -186,7 +186,23 @@ def get_users():
 
     return [dict(user) for user in users]
 
+@app.get("/users/profile/{user_id}")
+def get_user_profile(user_id: str):
+    db = get_db()
 
+    user = db.execute(
+        "SELECT * FROM clients WHERE userid = ?",
+        (user_id,)
+    ).fetchone()
+
+    db.close()
+
+    if user is None:
+        return {
+            "error": "User not found"
+        }
+    else:
+        return dict(user)
 # ---------------------------------------------------
 # INSTRUMENTS
 # ---------------------------------------------------
