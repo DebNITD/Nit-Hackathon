@@ -79,6 +79,7 @@ def create_tables():
             location TEXT,
             status TEXT DEFAULT 'REGISTERED',
             created_at TEXT,
+
             FOREIGN KEY (user_id) REFERENCES clients(userid)
         )
     """)
@@ -89,7 +90,6 @@ def create_tables():
             instrument_id INTEGER NOT NULL,
             owner_id INTEGER NOT NULL,
             application_type TEXT NOT NULL,
-            preferred_date TEXT,
             status TEXT DEFAULT 'SUBMITTED',
             created_at TEXT
         )
@@ -169,7 +169,7 @@ def create_user(details: client):
     db.close()
 
     return {
-        "message": "User created successfully",
+        "message": "User registered successfully",
         "user_id": user_id
     }
 
@@ -208,14 +208,7 @@ def get_user_profile(user_id: str):
 # ---------------------------------------------------
 
 @app.post("/instruments")
-def create_instrument(
-    owner_id: int,
-    instrument_type: str,
-    serial_number: str,
-    manufacturer: str = "",
-    model: str = "",
-    location: str = ""
-):
+def create_instrument(details: instrument):
     db = get_db()
 
     try:
@@ -224,6 +217,7 @@ def create_instrument(
             """
             INSERT INTO instruments
             (
+                user_id,
                 owner_id,
                 instrument_type,
                 manufacturer,
@@ -235,12 +229,13 @@ def create_instrument(
             VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
             (
-                owner_id,
-                instrument_type,
-                manufacturer,
-                model,
-                serial_number,
-                location,
+                details.user_id,
+                details.owner_id,
+                details.instrument_type,
+                details.manufacturer,
+                details.model,
+                details.serial_number,
+                details.location,
                 datetime.now().isoformat()
             )
         )
@@ -316,16 +311,14 @@ def create_application(
             instrument_id,
             owner_id,
             application_type,
-            preferred_date,
             created_at
         )
-        VALUES (?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?)
         """,
         (
             instrument_id,
             owner_id,
             application_type,
-            preferred_date,
             datetime.now().isoformat()
         )
     )
