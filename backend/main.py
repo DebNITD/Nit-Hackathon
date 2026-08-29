@@ -6,24 +6,24 @@ from pydantic import BaseModel
 
 class client(BaseModel):
 
-    name : str = None
-    userid : str = None
-    dob : str = None
-    phno : int = None
-    email : str = None
-    adhaarno : int = None
-    password : str = None
-    address : str = None
+    name      : str = None
+    userid    : str = None
+    dob       : str = None
+    phno      : int = None
+    email     : str = None
+    adhaarno  : int = None
+    password  : str = None
+    address   : str = None
 
 class instrument(BaseModel):
 
-    owner_id : int = None
-    user_id : str = None
+    owner_id        : int = None
+    user_id         : str = None
     instrument_type : str = None
-    manufacturer : str = None
-    model : str = None
-    serial_number : str = None
-    location : str = None
+    manufacturer    : str = None
+    model           : str = None
+    serial_number   : str = None
+    location        : str = None
 
 app = FastAPI(
     title="MaapYantra API",
