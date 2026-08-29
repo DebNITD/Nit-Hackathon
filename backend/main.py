@@ -7,6 +7,7 @@ from pydantic import BaseModel
 class client(BaseModel):
 
     name : str = None
+    userid : str = None
     dob : str = None
     phno : int = None
     email : str = None
@@ -17,6 +18,7 @@ class client(BaseModel):
 class instrument(BaseModel):
 
     owner_id : int = None
+    user_id : str = None
     instrument_type : str = None
     manufacturer : str = None
     model : str = None
@@ -38,7 +40,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # ---------------------------------------------------
 # DATABASE
 # ---------------------------------------------------
@@ -54,11 +55,15 @@ def create_tables():
     db = get_db()
 
     db.execute("""
-        CREATE TABLE IF NOT EXISTS user (
-            id INTEGER PRIMARY KEY ,
+        CREATE TABLE IF NOT EXISTS clients (
             name TEXT NOT NULL,
+            userid TEXT PRIMARY KEY,
+            dob DATE NOT NULL,
+            phno TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
-            role TEXT NOT NULL
+            adhaarno INTEGER UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            address TEXT
         )
     """)
 
@@ -66,13 +71,15 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS instruments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             owner_id INTEGER NOT NULL,
+            user_id TEXT NOT NULL,
             instrument_type TEXT NOT NULL,
             manufacturer TEXT,
             model TEXT,
             serial_number TEXT UNIQUE NOT NULL,
             location TEXT,
             status TEXT DEFAULT 'REGISTERED',
-            created_at TEXT
+            created_at TEXT,
+            FOREIGN KEY (user_id) REFERENCES clients(userid)
         )
     """)
 
@@ -145,19 +152,15 @@ def home():
 # ---------------------------------------------------
 
 @app.post("/users")
-def create_user(
-    name: str,
-    email: str,
-    role: str
-):
+def create_user(details: client):
     db = get_db()
 
     cursor = db.execute(
         """
-        INSERT INTO users (name, email, role)
-        VALUES (?, ?, ?)
+        INSERT INTO clients (name, userid, dob, phno, email, adhaarno, password, address)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """,
-        (name, email, role.upper())
+        (details.name, details.userid, details.dob, details.phno, details.email, details.adhaarno, details.password, details.address)
     )
 
 
@@ -176,7 +179,7 @@ def get_users():
     db = get_db()
 
     users = db.execute(
-        "SELECT * FROM users"
+        "SELECT * FROM clients"
     ).fetchall()
 
     db.close()
