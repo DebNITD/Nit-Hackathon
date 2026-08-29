@@ -1,7 +1,27 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 from datetime import datetime
+from pydantic import BaseModel
+
+class client(BaseModel):
+
+    name : str = None
+    dob : str = None
+    phno : int = None
+    email : str = None
+    adhaarno : int = None
+    password : str = None
+    address : str = None
+
+class instrument(BaseModel):
+
+    owner_id : int = None
+    instrument_type : str = None
+    manufacturer : str = None
+    model : str = None
+    serial_number : str = None
+    location : str = None
 
 app = FastAPI(
     title="MaapYantra API",
@@ -513,7 +533,7 @@ def add_test_result(
         )
     )
 
-    test_id = cursor.lastrowid
+    test_id = cursor.lastrowidx
 
     db.close()
 
