@@ -17,7 +17,7 @@ class client(BaseModel):
 
 class instrument(BaseModel):
 
-    owner_id        : int = None
+    owner_id        : str = None
     user_id         : str = None
     instrument_type : str = None
     manufacturer    : str = None
@@ -70,7 +70,7 @@ def create_tables():
     db.execute("""
         CREATE TABLE IF NOT EXISTS instruments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            owner_id INTEGER NOT NULL,
+            owner_id text NOT NULL,
             user_id TEXT NOT NULL,
             instrument_type TEXT NOT NULL,
             manufacturer TEXT,
@@ -226,7 +226,7 @@ def create_instrument(details: instrument):
                 location,
                 created_at
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 details.user_id,
