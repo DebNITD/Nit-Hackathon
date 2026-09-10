@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LMO Officer Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            height: 70px;
+            background-color: #1e3a5f;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .welcome-text {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .profile-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            top: 70px;
+            left: -300px;
+
+            width: 300px;
+            height: calc(100% - 70px);
+
+            background-color: white;
+
+            box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+
+            overflow-y: auto;
+
+            z-index: 1000;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+
+        /* ================= MENU ================= */
+
+        .menu-item {
+            padding: 17px 25px;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-item:hover {
+            background-color: #f1f1f1;
+        }
+
+
+        /* ================= SUBMENU ================= */
+
+        .submenu {
+            display: none;
+            background-color: #f8f9fa;
+        }
+
+        .submenu div {
+            padding: 14px 45px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .submenu div:hover {
+            background-color: #e9ecef;
+        }
+
+
+        /* ================= NESTED SUBMENU ================= */
+
+        .nested-submenu {
+            display: none;
+            background-color: #eaf0f6;
+        }
+
+        .nested-submenu div {
+            padding: 13px 65px;
+            cursor: pointer;
+        }
+
+        .nested-submenu div:hover {
+            background-color: #dbe7f3;
+        }
+
+
+        /* ================= LOGOUT ================= */
+
+        .logout {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+
+        /* ================= DASHBOARD ================= */
+
+        .dashboard {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .dashboard h1 {
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        .dashboard p {
+            font-size: 18px;
+            color: #555;
+        }
+
+
+        /* ================= PROFILE PANEL ================= */
+
+        .profile-panel {
+
+            position: fixed;
+
+            top: 75px;
+            right: 20px;
+
+            width: 300px;
+
+            background-color: white;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            display: none;
+
+            z-index: 2000;
+        }
+
+
+        .profile-panel h2 {
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+
+        .profile-panel p {
+            margin: 12px 0;
+            font-size: 16px;
+        }
+
+
+        .profile-panel.active {
+            display: block;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+    <div class="left-header">
+
+        <!-- HAMBURGER MENU -->
+
+        <div class="menu-btn"
+             onclick="toggleSidebar()">
+
+            ☰
+
+        </div>
+
+
+        <!-- WELCOME MESSAGE -->
+
+        <div class="welcome-text"
+             id="welcomeMessage">
+
+            Welcome, Officer
+
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE ICON -->
+
+    <div class="profile-icon"
+         onclick="toggleProfile()">
+
+        👤
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar"
+     id="sidebar">
+
+
+    <!-- APPLICATIONS -->
+
+    <div class="menu-item"
+         onclick="toggleApplications()">
+
+        📄 Applications ▼
+
+    </div>
+
+
+    <!-- APPLICATION SUBMENU -->
+
+    <div class="submenu"
+         id="applicationMenu">
+
+
+        <div onclick="showPage('New Applications')">
+
+            New Applications
+
+        </div>
+
+
+        <div onclick="showPage('Pending Reports')">
+
+            Pending Reports
+
+        </div>
+
+
+        <!-- SUBMITTED REPORTS -->
+
+        <div onclick="toggleSubmittedReports()">
+
+            Submitted Reports ▼
+
+        </div>
+
+
+        <!-- NESTED MENU -->
+
+        <div class="nested-submenu"
+             id="submittedMenu">
+
+
+            <div onclick="showPage('Encrypted Certification Generation with QR')">
+
+                🔐 Certification Generation with QR
+
+            </div>
+
+
+            <div onclick="showPage('Full Report')">
+
+                📋 Full Report
+
+            </div>
+
+
+        </div>
+
+
+        <div onclick="showPage('Reviewed Ones')">
+
+            Reviewed Ones
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- OFFICERS -->
+
+    <div class="menu-item"
+         onclick="showPage('Officers')">
+
+        👮 Officers
+
+    </div>
+
+
+
+    <!-- LOGOUT -->
+
+    <div class="menu-item logout"
+         onclick="logout()">
+
+        🚪 Logout
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================= PROFILE PANEL ================= -->
+
+<div class="profile-panel"
+     id="profilePanel">
+
+    <h2>Officer Profile</h2>
+
+    <p>
+        <strong>Name:</strong>
+        <span id="profileName">Not Available</span>
+    </p>
+
+    <p>
+        <strong>Phone:</strong>
+        <span id="profilePhone">Not Available</span>
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <span id="profileEmail">Not Available</span>
+    </p>
+
+</div>
+
+
+
+<!-- ================= MAIN DASHBOARD ================= -->
+
+<div class="dashboard">
+
+    <h1 id="pageTitle">
+
+        LMO Officer Dashboard
+
+    </h1>
+
+
+    <p id="pageContent">
+
+        Select an option from the menu to continue.
+
+    </p>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* ================= GET USER DATA ================= */
+
+/*
+These values should have been saved
+during the registration process.
+*/
+
+const officerName =
+    localStorage.getItem("userName");
+
+const officerPhone =
+    localStorage.getItem("userPhone");
+
+const officerEmail =
+    localStorage.getItem("userEmail");
+
+
+/* ================= WELCOME MESSAGE ================= */
+
+if (officerName) {
+
+    document
+        .getElementById("welcomeMessage")
+        .innerText =
+        "Welcome, " + officerName;
+
+}
+
+
+/* ================= PROFILE DETAILS ================= */
+
+document
+    .getElementById("profileName")
+    .innerText =
+    officerName || "Not Available";
+
+
+document
+    .getElementById("profilePhone")
+    .innerText =
+    officerPhone || "Not Available";
+
+
+document
+    .getElementById("profileEmail")
+    .innerText =
+    officerEmail || "Not Available";
+
+
+
+/* ================= SIDEBAR ================= */
+
+function toggleSidebar() {
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("active");
+
+}
+
+
+
+/* ================= APPLICATIONS MENU ================= */
+
+function toggleApplications() {
+
+    const menu =
+        document.getElementById("applicationMenu");
+
+
+    if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+    }
+
+    else {
+
+        menu.style.display = "block";
+
+    }
+
+}
+
+
+
+/* ================= SUBMITTED REPORTS ================= */
+
+function toggleSubmittedReports() {
+
+    const menu =
+        document.getElementById("submittedMenu");
+
+
+    if (menu.style.display === "block") {
+
+        menu.style.display = "none";
+
+    }
+
+    else {
+
+        menu.style.display = "block";
+
+    }
+
+}
+
+
+
+/* ================= PROFILE PANEL ================= */
+
+function toggleProfile() {
+
+    document
+        .getElementById("profilePanel")
+        .classList
+        .toggle("active");
+
+}
+
+
+
+/* ================= CHANGE PAGE ================= */
+
+function showPage(pageName) {
+
+    document
+        .getElementById("pageTitle")
+        .innerText =
+        pageName;
+
+
+    document
+        .getElementById("pageContent")
+        .innerText =
+        "You are currently viewing the " +
+        pageName +
+        " section.";
+
+}
+
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    /*
+    Remove current login session
+    */
+
+    localStorage.removeItem("isLoggedIn");
+
+
+    /*
+    Redirect to login page
+    */
+
+    window.location.href =
+        "/Nit-Hackathon/frontend/officer-login.html";
+
+}
+
+
+</script>
+
+<script>
+
+    localStorage.setItem(
+    "userName",
+    document.getElementById("name").value
+    );
+    localStorage.setItem(
+        "userPhone",
+        document.getElementById("phone").value
+    );
+    localStorage.setItem(
+        "userEmail",
+        document.getElementById("email").value
+    );
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard</title>
+
+    <link rel="stylesheet"
+          href="/Nit-Hackathon/frontend/style_new.css">
+
+</head>
+
+
+<body onload="loadUserDashboard()">
+
+
+
+<!-- ===================================
+     TOP NAVIGATION BAR
+=================================== -->
+
+<header class="dashboard-header">
+
+
+    <!-- LEFT SIDE -->
+
+    <div class="header-left">
+
+
+        <!-- HAMBURGER -->
+
+        <button
+            class="menu-button"
+            onclick="toggleMenu()">
+
+            ☰
+
+        </button>
+
+
+        <!-- WELCOME MESSAGE -->
+
+        <h2 id="welcomeName">
+
+            Welcome, User
+
+        </h2>
+
+
+    </div>
+
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="profile-area">
+
+
+        <!-- PROFILE BUTTON -->
+
+        <button
+            class="profile-icon"
+            onclick="toggleProfile()">
+
+            👤
+
+        </button>
+
+
+        <!-- PROFILE DROPDOWN -->
+
+        <div
+            class="profile-dropdown"
+            id="profileDropdown">
+
+
+            <p>
+
+                <strong id="profileName">
+
+                    Username
+
+                </strong>
+
+            </p>
+
+
+            <p
+                id="profileUserId">
+
+                User ID
+
+            </p>
+
+
+            <hr>
+
+
+            <button
+                onclick="showSection('profile')">
+
+                Profile
+
+            </button>
+
+
+            <button
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</header>
+
+
+
+<!-- ===================================
+     SIDEBAR
+=================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="sidebar-title">
+
+        <h2>Smart Tula Yantra</h2>
+
+    </div>
+
+
+
+    <ul>
+
+
+        <!-- INSTRUMENT LISTING -->
+
+        <li>
+
+            <button
+                onclick="showSection('instruments')">
+
+                ⚖ Instruments Listing
+
+            </button>
+
+        </li>
+
+
+
+        <!-- QR SCANNER -->
+
+        <li>
+
+            <button
+                onclick="showSection('qrScanner')">
+
+                📷 QR Code Scanner
+
+            </button>
+
+        </li>
+
+
+
+        <!-- APPROVED -->
+
+        <li>
+
+            <button
+                onclick="showSection('approved')">
+
+                ✓ Approved Applications
+
+            </button>
+
+        </li>
+
+
+
+        <!-- WAITLISTED -->
+
+        <li>
+
+            <button
+                onclick="showSection('waitlisted')">
+
+                ⏳ Waitlisted Applications
+
+            </button>
+
+        </li>
+
+
+
+        <!-- REJECTED -->
+
+        <li>
+
+            <button
+                onclick="showSection('rejected')">
+
+                ✕ Rejected Applications
+
+            </button>
+
+        </li>
+
+
+
+        <!-- CERTIFICATES -->
+
+        <li>
+
+            <button
+                onclick="showSection('certificates')">
+
+                📄 Verified Instrument Certificates
+
+            </button>
+
+        </li>
+
+
+
+        <!-- PROFILE -->
+
+        <li>
+
+            <button
+                onclick="showSection('profile')">
+
+                👤 Profile
+
+            </button>
+
+        </li>
+
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <button
+                class="logout-button"
+                onclick="lo gout()">
+
+                🚪 Logout
+
+            </button>
+
+        </li>
+
+
+    </ul>
+
+
+</aside>
+
+
+
+<!-- ===================================
+     MAIN DASHBOARD
+=================================== -->
+
+<main class="dashboard-content">
+
+
+
+    <!-- HOME SECTION -->
+
+    <section
+        class="dashboard-section"
+        id="home">
+
+
+        <h1>
+
+            Smart Weighing Dashboard
+
+        </h1>
+
+
+        <p>
+
+            Manage your instruments,
+            applications and certificates
+            from one place.
+
+        </p>
+
+
+
+        <div class="dashboard-cards">
+
+
+            <div class="info-card">
+
+                <h3>
+
+                    ⚖ Instruments
+
+                </h3>
+
+                <p>
+
+                    View registered
+                    weighing instruments.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <h3>
+
+                    📷 QR Scanner
+
+                </h3>
+
+                <p>
+
+                    Scan the QR code of
+                    your instrument.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <h3>
+
+                    📄 Certificates
+
+                </h3>
+
+                <p>
+
+                    View verified
+                    instrument certificates.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- INSTRUMENTS -->
+
+    <section
+        class="dashboard-section"
+        id="instruments"
+        style="display:none;">
+
+
+        <h1>
+
+            Instruments Listing
+
+        </h1>
+
+
+        <p>
+
+            Your registered weighing
+            and measuring instruments
+            will appear here.
+
+        </p>
+
+
+        <div class="empty-box">
+
+            No instruments found.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- QR SCANNER -->
+
+    <section
+        class="dashboard-section"
+        id="qrScanner"
+        style="display:none;">
+
+
+        <h1>
+
+            QR Code Scanner
+
+        </h1>
+
+
+        <p>
+
+            Scan the QR code attached
+            to your Smart Tula Yantra.
+
+        </p>
+
+
+        <div class="scanner-box">
+
+            <div class="camera-icon">
+
+                📷
+
+            </div>
+
+
+            <p>
+
+                QR Scanner will be
+                activated here.
+
+            </p>
+
+
+            <button
+                class="submit-button">
+
+                Start Scanner
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- APPROVED -->
+
+    <section
+        class="dashboard-section"
+        id="approved"
+        style="display:none;">
+
+
+        <h1>
+
+            Approved Applications
+
+        </h1>
+
+
+        <div class="empty-box">
+
+            No approved applications
+            available.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- WAITLISTED -->
+
+    <section
+        class="dashboard-section"
+        id="waitlisted"
+        style="display:none;">
+
+
+        <h1>
+
+            Waitlisted Applications
+
+        </h1>
+
+
+        <div class="empty-box">
+
+            No waitlisted applications
+            available.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- REJECTED -->
+
+    <section
+        class="dashboard-section"
+        id="rejected"
+        style="display:none;">
+
+
+        <h1>
+
+            Rejected Applications
+
+        </h1>
+
+
+        <div class="empty-box">
+
+            No rejected applications
+            available.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- CERTIFICATES -->
+
+    <section
+        class="dashboard-section"
+        id="certificates"
+        style="display:none;">
+
+
+        <h1>
+
+            Verified Instrument Certificates
+
+        </h1>
+
+
+        <p>
+
+            Your verified certificates
+            will be displayed here.
+
+        </p>
+
+
+        <div class="empty-box">
+
+            No certificates available.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- PROFILE -->
+
+    <section
+        class="dashboard-section"
+        id="profile"
+        style="display:none;">
+
+
+        <h1>
+
+            My Profile
+
+        </h1>
+
+
+        <div class="profile-card">
+
+
+            <div class="large-profile-icon">
+
+                👤
+
+            </div>
+
+
+            <h2 id="profileName">
+
+                User Name
+
+            </h2>
+
+
+            <p>
+
+                User ID:
+
+                <span
+                    id="profileUserId">
+
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script src="/Nit-Hackathon/frontend/javascript.js"></script>
+
+
+</body>
+
+</html>

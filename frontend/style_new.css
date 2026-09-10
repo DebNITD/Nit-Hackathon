@@ -1,0 +1,1114 @@
+/* =========================
+   GENERAL SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #f2f2f2;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    height: 150px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 12%;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+.logo-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.logo {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #f4f4f4;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+    border: 1px solid #ddd;
+
+}
+
+
+.logo-section h1 {
+
+    font-size: 25px;
+
+    letter-spacing: 5px;
+
+    color: #a56620;
+
+}
+
+
+.logo-section p {
+
+    margin-top: 8px;
+
+    font-size: 18px;
+
+    color: #555;
+
+}
+
+
+/* =========================
+   WELCOME BACKGROUND
+========================= */
+
+.welcome-section {
+
+    flex: 1;
+
+    min-height: 640px;
+
+    position: relative;
+
+    background-image:
+        url("images/weighing-background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.overlay {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, 0.30);
+
+    backdrop-filter: blur(2px);
+
+}
+
+
+/* =========================
+   LOGIN CARDS
+========================= */
+
+.login-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    padding: 40px;
+
+}
+
+
+.login-card {
+
+    width: 455px;
+
+    min-height: 385px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    backdrop-filter:
+        blur(12px);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.icon-box {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 28px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    margin-bottom: 18px;
+
+}
+
+
+.small-title {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+    color: #a56620;
+
+    margin-bottom: 6px;
+
+}
+
+
+.login-card h2 {
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+
+    color: #222;
+
+}
+
+
+.login-card hr {
+
+    border: none;
+
+    height: 1px;
+
+    background: #ccc;
+
+    margin: 25px 0;
+
+}
+
+
+.description {
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    color: #333;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.login-button {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 15px;
+
+    text-decoration: none;
+
+    color: #2f3e46;
+
+    font-weight: bold;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.85);
+
+    transition:
+        0.3s;
+
+}
+
+
+.login-button:hover {
+
+    background: #a56620;
+
+    color: white;
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #12374b;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 18px;
+
+    font-size: 14px;
+
+}
+
+
+footer p {
+
+    margin: 5px;
+
+}
+
+
+/* =========================
+   LOGIN PAGE DESIGN
+========================= */
+
+.login-page {
+
+    min-height: 100vh;
+
+    background-image:
+        url("images/weighing-background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+}
+
+
+.form-container {
+
+    width: 480px;
+
+    padding: 40px;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0, 0, 0, 0.3);
+
+}
+
+
+.form-container h2 {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #a56620;
+
+}
+
+
+.form-group {
+
+    margin-bottom: 15px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border:
+
+        1px solid #bbb;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+}
+
+
+.form-group input:focus {
+
+    outline: none;
+
+    border-color: #a56620;
+
+}
+
+
+.captcha-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.captcha-code {
+
+    padding: 12px 20px;
+
+    background: #e5e5e5;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    font-size: 18px;
+
+}
+
+
+.submit-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    background: #a56620;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+}
+
+
+.submit-button:hover {
+
+    background: #7e4c17;
+
+}
+
+
+.register-link {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+}
+
+
+.register-link a {
+
+    color: #a56620;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+
+
+.back-link {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+}
+
+
+.back-link a {
+
+    text-decoration: none;
+
+    color: #333;
+
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media(max-width: 900px) {
+
+    .login-container {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+    .login-card {
+
+        width: 90%;
+
+    }
+
+
+    header {
+
+        padding-left: 5%;
+
+    }
+
+}
+
+
+@media(max-width: 550px) {
+
+    header {
+
+        height: auto;
+
+        padding: 20px;
+
+    }
+
+
+    .logo-section h1 {
+
+        font-size: 16px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .logo-section p {
+
+        font-size: 13px;
+
+    }
+
+
+    .form-container {
+
+        width: 100%;
+
+        padding: 25px;
+
+    }
+
+}
+/* =====================================
+   USER DASHBOARD
+===================================== */
+
+
+.dashboard-header {
+
+    width: 100%;
+
+    height: 75px;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    box-shadow:
+        0 2px 10px
+        rgba(0, 0, 0, 0.1);
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+
+.header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.header-left h2 {
+
+    color: #333;
+
+    font-size: 22px;
+
+}
+
+
+/* =====================================
+   HAMBURGER BUTTON
+===================================== */
+
+.menu-button {
+
+    background: none;
+
+    border: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    color: #a56620;
+
+}
+
+
+/* =====================================
+   PROFILE ICON
+===================================== */
+
+.profile-area {
+
+    position: relative;
+
+}
+
+
+.profile-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #a56620;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================
+   PROFILE DROPDOWN
+===================================== */
+
+.profile-dropdown {
+
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+
+    top: 60px;
+
+    width: 220px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.2);
+
+}
+
+
+.profile-dropdown.show {
+
+    display: block;
+
+}
+
+
+.profile-dropdown button {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    background: #eee;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+}
+
+
+.profile-dropdown button:hover {
+
+    background: #a56620;
+
+    color: white;
+
+}
+
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 75px;
+
+    left: -300px;
+
+    width: 280px;
+
+    height: calc(100vh - 75px);
+
+    background: #17394a;
+
+    transition: 0.4s;
+
+    z-index: 9;
+
+    overflow-y: auto;
+
+}
+
+
+.sidebar.active {
+
+    left: 0;
+
+}
+
+
+.sidebar-title {
+
+    padding: 25px 20px;
+
+    color: white;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.2);
+
+}
+
+
+.sidebar ul {
+
+    list-style: none;
+
+}
+
+
+.sidebar ul li {
+
+    width: 100%;
+
+}
+
+
+.sidebar ul li button {
+
+    width: 100%;
+
+    padding: 17px 20px;
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+.sidebar ul li button:hover {
+
+    background: #a56620;
+
+}
+
+
+/* =====================================
+   LOGOUT BUTTON
+===================================== */
+
+.sidebar .logout-button {
+
+    color: #ffb3b3;
+
+}
+
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+.dashboard-content {
+
+    min-height:
+        calc(100vh - 75px);
+
+    padding: 45px;
+
+    background: #f4f6f8;
+
+}
+
+
+.dashboard-section h1 {
+
+    margin-bottom: 15px;
+
+    color: #17394a;
+
+}
+
+
+.dashboard-section > p {
+
+    color: #666;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =====================================
+   DASHBOARD CARDS
+===================================== */
+
+.dashboard-cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px, 1fr)
+        );
+
+    gap: 25px;
+
+}
+
+
+.info-card {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.info-card:hover {
+
+    transform:
+        translateY(-5px);
+
+}
+
+
+.info-card h3 {
+
+    color: #a56620;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =====================================
+   EMPTY BOX
+===================================== */
+
+.empty-box {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    color: #777;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.08);
+
+}
+
+
+/* =====================================
+   QR SCANNER
+===================================== */
+
+.scanner-box {
+
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    max-width: 600px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.08);
+
+}
+
+
+.camera-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.scanner-box p {
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =====================================
+   PROFILE
+===================================== */
+
+.profile-card {
+
+    max-width: 500px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.1);
+
+}
+
+
+.large-profile-icon {
+
+    width: 100px;
+
+    height: 100px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #a56620;
+
+    font-size: 45px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media(max-width: 600px) {
+
+
+    .dashboard-header {
+
+        padding: 0 15px;
+
+    }
+
+
+    .header-left h2 {
+
+        font-size: 16px;
+
+    }
+
+
+    .dashboard-content {
+
+        padding: 25px 15px;
+
+    }
+
+
+    .sidebar {
+
+        width: 260px;
+
+    }
+
+}

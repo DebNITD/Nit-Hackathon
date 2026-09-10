@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Administrative Login</title>
+
+    <link rel="stylesheet" href="/Nit-Hackathon/frontend/style_new.css">
+
+</head>
+
+
+<body class="login-page">
+
+
+    <div class="form-container">
+
+
+        <h2 id="loginTitle">
+
+            Administrative Login
+
+        </h2>
+
+
+        <form action="/Nit-Hackathon/frontend/LMO_dashboard.html">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter full name"
+                    required>
+
+            </div>
+
+
+
+            <!-- GOVERNMENT ID -->
+
+            <div class="form-group">
+
+                <label>Government ID</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter Government ID"
+                    required>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    placeholder="Enter phone number"
+                    required>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    placeholder="Enter password"
+                    required>
+
+            </div>
+
+
+
+            <!-- CAPTCHA -->
+
+            <div class="form-group">
+
+                <label>Captcha Code</label>
+
+
+                <div class="captcha-box">
+
+                    <div class="captcha-code">
+
+                        G5M8X
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        placeholder="Enter captcha"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="submit"
+                class="submit-button">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- REGISTRATION -->
+
+        <div class="register-link">
+
+            Not registered yet?
+
+            <a href="/Nit-Hackathon/frontend/officer-register.html">
+
+                Register Here
+
+            </a>
+
+        </div>
+
+
+
+        <!-- BACK -->
+
+        <div class="back-link">
+
+            <a href="/Nit-Hackathon/frontend/Welcome_new.html">
+
+                ← Back to Welcome Page
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- CHANGE TITLE BASED ON LINK -->
+
+    <script>
+
+        const parameters =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const type =
+            parameters.get("type");
+
+
+        const title =
+            document.getElementById(
+                "loginTitle"
+            );
+
+
+        if (type === "lmo") {
+
+            title.innerText =
+                "LMO Login";
+
+        }
+
+
+        else if (type === "authority") {
+
+            title.innerText =
+                "General Authority Login";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

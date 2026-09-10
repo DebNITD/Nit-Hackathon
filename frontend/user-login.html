@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Login</title>
+
+    <link rel="stylesheet"
+          href="/Nit-Hackathon/frontend/style_new.css">
+
+</head>
+
+
+<body class="login-page">
+
+
+<div class="form-container">
+
+
+    <h2>User Login</h2>
+
+
+    <form onsubmit="loginUser(event)">
+
+
+        <!-- USER ID -->
+
+        <div class="form-group">
+
+            <label>User ID</label>
+
+            <input
+                type="text"
+                id="loginUserId"
+                placeholder="Enter User ID"
+                required>
+
+        </div>
+
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password"
+                required>
+
+        </div>
+
+
+
+        <!-- CAPTCHA -->
+
+        <div class="form-group">
+
+            <label>Captcha Code</label>
+
+
+            <div class="captcha-box">
+
+                <div class="captcha-code">
+
+                    A7K9P
+
+                </div>
+
+
+                <input
+                    type="text"
+                    placeholder="Enter captcha"
+                    required>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="submit"
+            class="submit-button">
+
+            Login
+
+        </button>
+
+
+    </form>
+
+
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="/Nit-Hackathon/frontend/user-register.html">
+
+            Register Here
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<script src="/Nit-Hackathon/frontend/javascript.js"></script>
+
+
+</body>
+
+</html>
