@@ -1,7 +1,7 @@
 # Nit-Hackathon
 
 Welcome to Project ................MaapYantra..............
-                    by Team Parakh, NIT Durgapur
+                    by Team Yatharth Bharat, NIT Durgapur
 
 ================================================Problem Statement================================================================
 Development of an Online Verification System for Weighing and Measuring Instruments (Under-Smart Automation, Ministry of Consumer Affairs, Food and Public)
@@ -79,7 +79,7 @@ The verification officer performs the required tests.
 
 ### Step 7 — Digital Certificate
 
-If verified, PARAKH generates a digital verification certificate containing details.
+If verified, MaapYantra generates a digital verification certificate containing details.
 
 ### Step 9 — QR-based Verification
 
