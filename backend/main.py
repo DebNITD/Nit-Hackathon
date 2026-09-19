@@ -213,7 +213,7 @@ def create_instrument(details: instrument):
     try:
 
         cursor = db.execute(
-            """
+            f"""
             INSERT INTO instruments
             (
                 user_id,
@@ -225,18 +225,8 @@ def create_instrument(details: instrument):
                 location,
                 created_at
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                details.user_id,
-                details.owner_id,
-                details.instrument_type,
-                details.manufacturer,
-                details.model,
-                details.serial_number,
-                details.location,
-                datetime.now().isoformat()
-            )
+            VALUES ({details.user_id}, {details.owner_id}, {details.instrument_type}, {details.manufacturer}, {details.model}, {details.serial_number}, {details.location}, {datetime.now().isoformat()})
+            """
         )
 
 
@@ -275,8 +265,7 @@ def get_instrument(instrument_id: int):
     db = get_db()
 
     instrument = db.execute(
-        "SELECT * FROM instruments WHERE id = ?",
-        (instrument_id,)
+        f"SELECT * FROM instruments WHERE id = {instrument_id}"
     ).fetchone()
 
     db.close()
@@ -568,12 +557,11 @@ def complete_verification(verification_id: int):
     db = get_db()
 
     tests = db.execute(
-        """
+        f"""
         SELECT *
         FROM test_results
-        WHERE verification_id = ?
-        """,
-        (verification_id,)
+        WHERE verification_id = {verification_id}
+        """
     ).fetchall()
 
     if not tests:
@@ -591,35 +579,29 @@ def complete_verification(verification_id: int):
             final_result = "FAIL"
 
     db.execute(
-        """
+        f"""
         UPDATE verifications
-        SET result = ?
-        WHERE id = ?
-        """,
-        (final_result, verification_id)
+        SET result = {final_result}
+        WHERE id = {verification_id}
+        """
     )
 
     # Find the application
     verification = db.execute(
-        """
+        f"""
         SELECT application_id
         FROM verifications
-        WHERE id = ?
-        """,
-        (verification_id,)
+        WHERE id = {verification_id}
+        """
     ).fetchone()
 
     if verification:
         db.execute(
-            """
+            f"""
             UPDATE applications
-            SET status = ?
-            WHERE id = ?
-            """,
-            (
-                "VERIFIED" if final_result == "PASS" else "REJECTED",
-                verification["application_id"]
-            )
+            SET status = {"VERIFIED" if final_result == "PASS" else "REJECTED"}
+            WHERE id = {verification["application_id"]}
+            """
         )
 
     db.close()
@@ -641,12 +623,11 @@ def get_verification(verification_id: int):
     db = get_db()
 
     verification = db.execute(
-        """
+        f"""
         SELECT *
         FROM verifications
-        WHERE id = ?
-        """,
-        (verification_id,)
+        WHERE id = {verification_id}
+        """
     ).fetchone()
 
     if verification is None:
@@ -657,12 +638,11 @@ def get_verification(verification_id: int):
         }
 
     tests = db.execute(
-        """
+        f"""
         SELECT *
         FROM test_results
-        WHERE verification_id = ?
-        """,
-        (verification_id,)
+        WHERE verification_id = {verification_id}
+        """
     ).fetchall()
 
     db.close()
