@@ -156,11 +156,10 @@ def create_user(details: client):
     db = get_db()
 
     cursor = db.execute(
-        """
+        f"""
         INSERT INTO clients (name, userid, dob, phno, email, adhaarno, password, address)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        (details.name, details.userid, details.dob, details.phno, details.email, details.adhaarno, details.password, details.address)
+        VALUES ({details.name}, {details.userid}, {details.dob}, {details.phno}, {details.email}, {details.adhaarno}, {details.password}, {details.address})
+        """
     )
 
 
