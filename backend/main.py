@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 from datetime import datetime
 from pydantic import BaseModel
+from sql_tstring import sql
 
 class client(BaseModel):
 
@@ -155,12 +156,12 @@ def home():
 def create_user(details: client):
     db = get_db()
 
-    cursor = db.execute(
-        f"""
+    cursor = db.execute(*sql(
+        t"""
         INSERT INTO clients (name, userid, dob, phno, email, adhaarno, password, address)
         VALUES ({details.name}, {details.userid}, {details.dob}, {details.phno}, {details.email}, {details.adhaarno}, {details.password}, {details.address})
         """
-    )
+    ))
 
 
     user_id = cursor.lastrowid
@@ -189,10 +190,9 @@ def get_users():
 def get_user_profile(user_id: str):
     db = get_db()
 
-    user = db.execute(
-        "SELECT * FROM clients WHERE userid = ?",
-        (user_id,)
-    ).fetchone()
+    user = db.execute(*sql(
+        t"SELECT * FROM clients WHERE userid = {user_id}"
+    )).fetchone()
 
     db.close()
 
@@ -212,8 +212,8 @@ def create_instrument(details: instrument):
 
     try:
 
-        cursor = db.execute(
-            f"""
+        cursor = db.execute(*sql(
+            t"""
             INSERT INTO instruments
             (
                 user_id,
@@ -227,7 +227,7 @@ def create_instrument(details: instrument):
             )
             VALUES ({details.user_id}, {details.owner_id}, {details.instrument_type}, {details.manufacturer}, {details.model}, {details.serial_number}, {details.location}, {datetime.now().isoformat()})
             """
-        )
+        ))
 
 
         instrument_id = cursor.lastrowid
@@ -264,9 +264,9 @@ def get_instrument(instrument_id: int):
 
     db = get_db()
 
-    instrument = db.execute(
-        f"SELECT * FROM instruments WHERE id = {instrument_id}"
-    ).fetchone()
+    instrument = db.execute(*sql(
+        t"SELECT * FROM instruments WHERE id = {instrument_id}"
+    )).fetchone()
 
     db.close()
 
@@ -556,13 +556,13 @@ def complete_verification(verification_id: int):
 
     db = get_db()
 
-    tests = db.execute(
-        f"""
+    tests = db.execute(*sql(
+        t"""
         SELECT *
         FROM test_results
         WHERE verification_id = {verification_id}
         """
-    ).fetchall()
+    )).fetchall()
 
     if not tests:
         db.close()
@@ -578,31 +578,31 @@ def complete_verification(verification_id: int):
         if test["result"] == "FAIL":
             final_result = "FAIL"
 
-    db.execute(
-        f"""
+    db.execute(*sql(
+        t"""
         UPDATE verifications
         SET result = {final_result}
         WHERE id = {verification_id}
         """
-    )
+    ))
 
     # Find the application
-    verification = db.execute(
-        f"""
+    verification = db.execute(*sql(
+        t"""
         SELECT application_id
         FROM verifications
         WHERE id = {verification_id}
         """
-    ).fetchone()
+    )).fetchone()
 
     if verification:
-        db.execute(
-            f"""
+        db.execute(*sql(
+            t"""
             UPDATE applications
             SET status = {"VERIFIED" if final_result == "PASS" else "REJECTED"}
             WHERE id = {verification["application_id"]}
             """
-        )
+        ))
 
     db.close()
 
@@ -622,13 +622,13 @@ def get_verification(verification_id: int):
 
     db = get_db()
 
-    verification = db.execute(
-        f"""
+    verification = db.execute(*sql(
+        t"""
         SELECT *
         FROM verifications
         WHERE id = {verification_id}
         """
-    ).fetchone()
+    )).fetchone()
 
     if verification is None:
         db.close()
@@ -637,13 +637,13 @@ def get_verification(verification_id: int):
             "error": "Verification not found"
         }
 
-    tests = db.execute(
-        f"""
+    tests = db.execute(*sql(
+        t"""
         SELECT *
         FROM test_results
         WHERE verification_id = {verification_id}
         """
-    ).fetchall()
+    )).fetchall()
 
     db.close()
 
