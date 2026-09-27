@@ -292,8 +292,8 @@ def create_application(
 
     db = get_db()
 
-    cursor = db.execute(
-        """
+    cursor = db.execute(*sql(
+        t"""
         INSERT INTO applications
         (
             instrument_id,
@@ -301,15 +301,9 @@ def create_application(
             application_type,
             created_at
         )
-        VALUES (?, ?, ?, ?)
-        """,
-        (
-            instrument_id,
-            owner_id,
-            application_type,
-            datetime.now().isoformat()
-        )
-    )
+        VALUES ({instrument_id}, {owner_id}, {application_type}, {datetime.now().isoformat()})
+        """
+    ))
 
 
     application_id = cursor.lastrowid
@@ -346,14 +340,13 @@ def get_application(application_id: int):
 
     db = get_db()
 
-    application = db.execute(
-        """
+    application = db.execute(*sql(
+        t"""
         SELECT *
         FROM applications
-        WHERE id = ?
-        """,
-        (application_id,)
-    ).fetchone()
+        WHERE id = {application_id}
+        """
+    )).fetchone()
 
     db.close()
 
@@ -378,32 +371,26 @@ def assign_officer(
 
     db = get_db()
 
-    cursor = db.execute(
-        """
+    cursor = db.execute(*sql(
+        t"""
         INSERT INTO assignments
         (
             application_id,
             officer_id,
             scheduled_date
         )
-        VALUES (?, ?, ?)
-        """,
-        (
-            application_id,
-            officer_id,
-            scheduled_date
-        )
-    )
+        VALUES ({application_id}, {officer_id}, {scheduled_date})
+        """
+    ))
 
     # Update application status
-    db.execute(
-        """
+    db.execute(*sql(
+        t"""
         UPDATE applications
         SET status = 'ASSIGNED'
-        WHERE id = ?
-        """,
-        (application_id,)
-    )
+        WHERE id = {application_id}
+        """
+    ))
 
 
     assignment_id = cursor.lastrowid
@@ -445,8 +432,8 @@ def create_verification(
 
     db = get_db()
 
-    cursor = db.execute(
-        """
+    cursor = db.execute(*sql(
+        t"""
         INSERT INTO verifications
         (
             application_id,
@@ -456,27 +443,18 @@ def create_verification(
             remarks,
             verification_date
         )
-        VALUES (?, ?, ?, ?, ?, ?)
-        """,
-        (
-            application_id,
-            officer_id,
-            latitude,
-            longitude,
-            remarks,
-            datetime.now().isoformat()
-        )
-    )
+        VALUES ({application_id}, {officer_id}, {latitude}, {longitude}, {remarks}, {datetime.now().isoformat()})
+        """
+    ))
 
     # Update application status
-    db.execute(
-        """
+    db.execute(*sql(
+        t"""
         UPDATE applications
         SET status = 'VERIFICATION_PENDING'
-        WHERE id = ?
-        """,
-        (application_id,)
-    )
+        WHERE id = {application_id}
+        """
+    ))
 
 
     verification_id = cursor.lastrowid
